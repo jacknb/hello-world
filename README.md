@@ -1,8 +1,5 @@
 # hello-world
-Just another respository and my begin in github
-
-Hi,humans!
-
-In there,I like java and the Big Data.
-I've had tacos on the moon.
+At begins,it is my start of github.
+And then,I learning hadoop programs in the hello-world.
+At last,thank you for you attention my projects.
 
