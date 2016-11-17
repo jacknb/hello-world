@@ -18,8 +18,8 @@ import java.net.URI;
  */
 public class FileCopyWithProcess {
     public static void main(String[] args) throws Exception {
-        String localStr = "/home/znb/java/test.txt";
-        String hdfStr = "hdfs://localhost:9000/input/test.txt";//需要指定文件名
+        String localStr = "/home/znb/java/hadoop-2.7.1.tar.gz";
+        String hdfStr = "hdfs://localhost:9000/input/hadoop-2.7.1.tar.gz";//需要指定文件名
         InputStream in = new BufferedInputStream(new FileInputStream(localStr));
 
         Configuration conf = new Configuration();
