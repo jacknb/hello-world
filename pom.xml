@@ -48,5 +48,12 @@
             <artifactId>hadoop-kms</artifactId>
             <version>${hadoop.version}</version>
         </dependency>
+
+        <!--add erasure code-->
+        <dependency>
+            <groupId>com.xiaomi.infra</groupId>
+            <artifactId>java-jerasure</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
     </dependencies>
 </project>
