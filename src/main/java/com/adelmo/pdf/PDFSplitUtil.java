@@ -5,11 +5,32 @@ import com.itextpdf.text.pdf.*;
 import org.apache.commons.lang.Validate;
 
 import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Administrator on 2016/12/20.
  */
 public class PDFSplitUtil {
+
+    /**
+     * 批量按页拆分pdf
+     *
+     * @param inputPath
+     * @param outputPath
+     * @param fromPage
+     */
+    protected static void splitPDFList(String inputPath, String outputPath, int fromPage) {
+        Validate.notNull(inputPath, "inputPath is null");
+        Validate.notNull(outputPath, "outputPath is null");
+
+        //获取路径下的所有文件
+        List<String> pdfNames = new ArrayList<String>();
+        PrintFileUtil.printSpecificFileName(inputPath, ".pdf", pdfNames);
+        for (int i = 0; i < pdfNames.size(); i++) {
+            splitPDF(pdfNames.get(i), outputPath, fromPage);
+        }
+    }
 
     /**
      * 按页拆分pdf
@@ -18,9 +39,7 @@ public class PDFSplitUtil {
      * @param outputPath
      * @param fromPage
      */
-    public static void splitPDFByPages(String inputPath, String outputPath, int fromPage) {
-        Validate.notNull(inputPath, "inputPath is null");
-        Validate.notNull(outputPath, "outputPath is null");
+    private static void splitPDF(String inputPath, String outputPath, int fromPage) {
         Document document = new Document();
         try {
             File file = new File(inputPath);
@@ -28,6 +47,9 @@ public class PDFSplitUtil {
             PdfWriter pdfWriter;
             PdfImportedPage pdfImportedPage;
             PdfContentByte pdfContentByte;
+
+            //当输出文件/文件夹不存在时，创建文件/文件夹
+            PrintFileUtil.createDir(outputPath);
 
             PdfReader pdfReader = new PdfReader(inputPath);
 
