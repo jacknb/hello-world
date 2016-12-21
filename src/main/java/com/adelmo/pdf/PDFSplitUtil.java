@@ -48,9 +48,6 @@ public class PDFSplitUtil {
             PdfImportedPage pdfImportedPage;
             PdfContentByte pdfContentByte;
 
-            //当输出文件/文件夹不存在时，创建文件/文件夹
-            PrintFileUtil.createDir(outputPath);
-
             PdfReader pdfReader = new PdfReader(inputPath);
 
             /*//当文件较大的时候会报异常
