@@ -13,6 +13,10 @@ public class SegmentPDF {
         String inputPath = "G:\\论文\\References\\other\\";
         String outputPath = "G:\\aaa\\";
         List<String> lists = new ArrayList<String>();
+
+        //先判断输出文件夹是否存在
+        PrintFileUtil.createDir(outputPath);
+
         PrintFileUtil.printSpecificFileName(inputPath, ".pdf", lists);
         for (int i = 0; i < lists.size(); i++) {
             System.out.println(lists.get(i));
