@@ -10,7 +10,7 @@ import java.util.List;
  */
 public class SegmentPDF {
     public static void main(String[] args) throws IOException {
-        String inputPath = "G:\\论文\\References\\other\\";
+        String inputPath = "C:\\Users\\Administrator\\Desktop\\2016年湖南第二届研究生数模竞赛获证书扫描.pdf";
         String outputPath = "G:\\aaa\\";
         List<String> lists = new ArrayList<String>();
 
