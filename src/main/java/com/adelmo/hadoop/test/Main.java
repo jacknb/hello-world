@@ -21,7 +21,7 @@ public class Main {
 
         for (int i=2;i<=8;i++){
             for (int j=2;j<=6;j++){
-                System.out.println(j+"-->"+decimalFormat.format());
+//                System.out.println(j+"-->"+decimalFormat.format());
             }
         }
     }
