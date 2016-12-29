@@ -1,5 +1,5 @@
 # hello-world
-At begins,it is my start of github.
-And then,I learning hadoop programs in the hello-world.
-At last,thank you for you attention my projects.
-
+I programs the code in test.<br/>
+For example,test hadoop api,leetcode,erasure code and so on.<br/>
+So,this project is all my test on the daily.
+Thank you for watching!
