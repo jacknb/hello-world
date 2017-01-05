@@ -1,4 +1,4 @@
-package com.adelmo.hadoop.test;
+package com.adelmo.test;
 
 import java.math.RoundingMode;
 import java.text.DecimalFormat;
@@ -6,28 +6,36 @@ import java.text.DecimalFormat;
 /**
  * Created by znb on 16-10-31.
  */
-public class Main {
+public class RaidTest {
     public static void main(String[] args) {
-//        System.out.println(Math.pow(0.5, 2));
-//        System.out.println(raid5Reliable(4, 0.9));
 
         double result = (raid5Reliable(4, 0.95));
         DecimalFormat decimalFormat = new DecimalFormat("0.0000");
 
         for (int i = 1; i <= 10; i++) {
-//            System.out.println(decimalFormat.format(result));
-            System.out.println(i + "->" + decimalFormat.format(Math.pow(Double.valueOf(decimalFormat.format(result)), i)));
+//            System.out.println(i + "->" + decimalFormat.format(Math.pow(Double.valueOf(decimalFormat.format(result)), i)));
         }
 
-        for (int i=2;i<=8;i++){
-            for (int j=2;j<=6;j++){
-//                System.out.println(j+"-->"+decimalFormat.format());
+        int k;
+        int s;
+        int i;
+
+        double reliable = 0.9;
+        System.out.println(facRest(16, 2, 0.1));
+        System.out.println(decimalFormat.format(facRest(16, 2, 0.1)));
+
+        for (k = 4; k <= 10; k++) {
+            for (s = 1; s <= 5; s++) {
+                for (i = 0; i <= k * s - k; i++) {
+                    System.out.println(k + ":" + s + ":" + i + ":" + decimalFormat.format(facRest(k * s, i, 1 - reliable)));
+                }
             }
         }
     }
 
     /**
      * 计算Raid5可靠性最终计算结果
+     *
      * @param m
      * @param reliable
      * @return
@@ -50,8 +58,20 @@ public class Main {
         return result;
     }
 
+    /**
+     * 计算阶乘
+     *
+     * @param n
+     * @param num
+     * @param reliable
+     * @return
+     */
     public static double facRest(int n, int num, double reliable) {
-        return (Math.pow(reliable, num) * Math.pow(1 - reliable, n - num)) * (factorial(n) / (factorial(n - num) * factorial(num)));
+
+        double r1 = factorial(n) / (factorial(n - num) * factorial(num));
+        double r2 = Math.pow(reliable, num) * Math.pow(1 - reliable, n - num);
+
+        return format2(r1) * format2(r2);
     }
 
 
@@ -73,15 +93,15 @@ public class Main {
     }
 
     /**
-     * 使用DecimalFormat,保留小数点后两位
+     * 使用DecimalFormat,保留小数点后4位
      *
      * @param value
      * @return
      */
-    public static String format2(double value) {
+    public static double format2(double value) {
 
         DecimalFormat df = new DecimalFormat("0.0000");
         df.setRoundingMode(RoundingMode.HALF_UP);
-        return df.format(value);
+        return Double.parseDouble(df.format(value));
     }
 }
