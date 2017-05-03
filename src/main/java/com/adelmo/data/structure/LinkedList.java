@@ -1,6 +1,12 @@
 package com.adelmo.data.structure;
 
+import org.apache.commons.lang.Validate;
+
 import java.util.Scanner;
+/**
+ * Created by znb on 17-5-3.
+ */
+
 
 /**
  * Created by znb on 17-4-23.
@@ -64,6 +70,7 @@ class CLType {
     DATA2 nodeData = new DATA2();
     CLType nextNode;
 
+
     /**
      * 在链表尾处追加结点
      *
@@ -73,27 +80,24 @@ class CLType {
      */
     CLType CLAddEnd(CLType head, DATA2 nodeData) {
         CLType node, htemp;
-
         if ((node = new CLType()) == null) {
-            System.out.println("申请内存失败!");
+            System.out.println("申请内存失败！\n");
             return null;
-        } else {
-            node.nodeData = nodeData;//保存数据
-            node.nextNode = null;
-
-            if (head == null) {
-                head = node;
-                return head;
-            }
-            htemp = head;
-            while (htemp.nextNode != null) {
-                htemp = htemp.nextNode;
-            }
-            //开始插入
-            htemp.nextNode = node;
+        }
+        node.nodeData = nodeData;
+        node.nextNode = null;
+        if (head == null) {
+            head = node;
             return head;
         }
+        htemp = head;
+        while (htemp.nextNode != null) {
+            htemp = htemp.nextNode;
+        }
+        htemp.nextNode = node;
+        return head;
     }
+
 
     /**
      * 插入头结点
@@ -103,7 +107,14 @@ class CLType {
      * @return
      */
     CLType CLAddFirst(CLType head, DATA2 nodeData) {
-        CLType node;
+        CLType node, htemp;
+        if ((node = new CLType()) == null) {
+            System.out.println("申请内存失败！\n");
+            return null;
+        }
+        node.nodeData = nodeData;//保存数据
+        node.nextNode = head;//指向头引用所指向结点
+        head = node;//头引用指向新增结点
         if ((node = new CLType()) == null) {
             System.out.println("申请内存空间失败！");
             return null;
@@ -126,6 +137,7 @@ class CLType {
     CLType CLFindNode(CLType head, String key) {
         CLType htemp;
         htemp = head;
+        Validate.notNull(key, "key should not null!");
         while (htemp != null) {
             if (htemp.nodeData.key.compareTo(key) == 0) {
                 return htemp;
@@ -139,13 +151,23 @@ class CLType {
      * 插入结点
      *
      * @param head
-     * @param key
+     * @param findKey
      * @param nodeData
      * @return
      */
     CLType CLInsertNode(CLType head, String findKey, DATA2 nodeData) {
         CLType node, nodetemp;
         if ((node = new CLType()) == null) {
+            System.out.println("申请内存失败！\n");
+            return null;
+        }
+        node.nodeData = nodeData;
+        nodetemp = CLFindNode(head, findKey);
+        if (nodetemp == null) {
+            System.out.print("未找到正确的位置！\n");
+        } else {
+            node.nextNode = nodetemp.nextNode;
+            nodetemp.nextNode = node;
             System.out.println("申请内存失败!");
             return null;
         }
@@ -169,6 +191,7 @@ class CLType {
      * @return
      */
     int CLDeleteNode(CLType head, String key) {
+        Validate.notNull(key, "key should not be null!");
         CLType node, htemp;//node用来保存需要删除的结点
         htemp = head;
         node = head;
@@ -210,11 +233,12 @@ class CLType {
         CLType htemp;
         DATA2 nodeData;
         htemp = head;
-        System.out.printf("当前链表共有结点%d,所有数据如下：", CLLength(htemp));
+        System.out.printf("当前链表共有%d个结点。链表所有数据如下：\n", CLLength(head));
         while (htemp != null) {
             nodeData = htemp.nodeData;
-            System.out.printf("结点(%s %s %d)\n", nodeData.key, nodeData.name, nodeData.age);
+            System.out.printf("结点(%s,%s,%d)\n", nodeData.key, nodeData.name, nodeData.age);
             htemp = htemp.nextNode;
         }
     }
+
 }
