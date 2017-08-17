@@ -3,14 +3,11 @@ package com.adelmo.data.structure;
 import org.apache.commons.lang.Validate;
 
 import java.util.Scanner;
+
 /**
  * Created by znb on 17-5-3.
  */
 
-
-/**
- * Created by znb on 17-4-23.
- */
 public class LinkedList {
 
     public static void main(String[] args) {
