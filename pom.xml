@@ -132,6 +132,18 @@
             <artifactId>xz</artifactId>
             <version>1.0</version>
         </dependency>
+
+        <!--Excel-->
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi-ooxml</artifactId>
+            <version>3.10-FINAL</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi-ooxml-schemas</artifactId>
+            <version>3.10-FINAL</version>
+        </dependency>
     </dependencies>
     <distributionManagement>
         <repository>
