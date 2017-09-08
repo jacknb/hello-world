@@ -1,4 +1,4 @@
-package com.adelmo.test;
+package com.adelmo.eracode;
 
 import java.math.RoundingMode;
 import java.text.DecimalFormat;
