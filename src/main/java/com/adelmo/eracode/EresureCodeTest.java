@@ -1,4 +1,4 @@
-package com.adelmo.test;
+package com.adelmo.eracode;
 
 import com.xiaomi.infra.ec.ErasureCodec;
 
