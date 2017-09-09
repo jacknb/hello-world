@@ -33,6 +33,7 @@ public class BigNumber {
         int[][] tmp = new int[charNum1.length][charNum2.length];
 
         for (int i = 0; i < charNum1.length; i++) {
+            //char转int为ASCII值
             begint[i] = Integer.valueOf(charNum1[i] + "");
         }
 
