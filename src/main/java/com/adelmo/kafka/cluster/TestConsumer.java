@@ -16,6 +16,8 @@ public class TestConsumer {
         Properties props = new Properties();
         props.put("bootstrap.servers", "localhost:9092");
         props.put("transactional.id", "my-transactional-id");
+        //每个消费者分配独立的组号
+        props.put("group.id", "test");
         Producer<String, String> producer = new KafkaProducer<String, String>(props, new StringSerializer(), new StringSerializer());
 
         producer.initTransactions();

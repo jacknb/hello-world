@@ -55,7 +55,8 @@ public class FileSystemCat {
         try {
             in = fileSystem.open(new Path(uri));
             IOUtils.copyBytes(in, System.out, 4096, false);
-            in.seek(0);//返回文件起点
+            //返回文件起点
+            in.seek(0);
             IOUtils.copyBytes(in, System.out, 4096, false);
         } catch (Exception e) {
             e.printStackTrace();
